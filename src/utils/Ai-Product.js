@@ -30,8 +30,6 @@ export async function generateProductEmbeddings() {
             const id = docSnap.id;
             const text = `Product: ${data.name}\nCategory: ${data.category}\nPrice: $${data.price}\nStatus: ${data.stock}\nDescription: ${data.description}`;
 
-            // FIXED: embedContent requires 'contents' as an array 
-            // to resolve the "requests[]" schema error.
             const result = await client.models.embedContent({
                 model: EMBED_MODEL,
                 contents: [text] // The SDK converts a string list into a single content instance
